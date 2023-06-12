@@ -7,6 +7,7 @@ class Address
     public $address;
     public $drivers;
     public $score;
+    public $driver;
 
     /**
      * @param $address
