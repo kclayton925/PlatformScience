@@ -4,10 +4,7 @@ namespace PlatformScience;
 
 class Driver
 {
-
     public $name;
-    public $addresses;
-    public $score;
 
     /**
      * @param $name
@@ -22,7 +19,7 @@ class Driver
      */
     public function numberOfVowels(): int
     {
-        $vowels = ['A', 'E', 'I', 'O', 'U', 'AW', 'EW', 'IW', 'OW', 'UW', 'AY', 'EY', 'IY', 'OY', 'UY'];
+        $vowels = ['A', 'E', 'I', 'O', 'U', 'AY', 'EY', 'IY', 'OY', 'UY'];
         $upper_case_name = strtoupper($this->name);
         $vowel_count = 0;
 
@@ -34,31 +31,20 @@ class Driver
     }
 
     /**
-     * @param array $addresses
-     */
-    public function scoreAllAddresses(array $addresses)
-    {
-        foreach ($addresses as $address) {
-            $address->score = $this->calculate($address);
-            $this->addresses[] = $address;
-        }
-    }
-
-    /**
      * @param Address $address
      * @return float
      */
-    private function calculate(Address $address): float
+    public function calculate(Address $address): float
     {
         $score = 0;
-
+        /* Check if even or odd and multiply by weight. */
         if ($address->isEven()) {
             $score = $this->numberOfVowels() * 1.5;
         } else {
             $score = $this->numberOfConsonants() * 1.0;
         }
 
-        //Check factors
+        /* Check for common factors for a bonus weight. */
         if ($this->hasCommonFactors(strlen($address->name))) {
             $score = $score * 1.5;
         }
@@ -72,7 +58,7 @@ class Driver
     private function numberOfConsonants(): int
     {
         $name = $this->name;
-        // Remove Whitespace
+        /* Remove Whitespace */
         $name = str_replace(' ', '', $name);
         $length = strlen($name);
         $length -= $this->numberOfVowels();

@@ -5,9 +5,6 @@ namespace PlatformScience;
 class Address
 {
     public $address;
-    public $drivers;
-    public $score;
-    public $driver;
 
     /**
      * @param $address
@@ -33,11 +30,15 @@ class Address
      * @param $drivers
      * @return void
      */
-    public function scoreAllDrivers($drivers)
-    {
-        foreach ($drivers as $driver) {
-            $score = $driver->score();
-            $driver->score = $score;
-        }
-    }
+//    public function scoreAllDrivers($drivers)
+//    {
+//        $total_score = 0;
+//        $this->drivers = $drivers;
+//        foreach ($drivers as $driver) {
+//            $score = $driver->calculate($this);
+//            $driver->score = $score;
+//            $total_score += $score;
+//        }
+//        $this->score = $total_score;
+//    }
 }
